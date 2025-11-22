@@ -1,0 +1,19 @@
+# Development overrides - use: docker-compose -f docker-compose.yml -f docker-compose.override.yml up
+
+version: '3.8'
+
+services:
+  backend:
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./backend/src:/app/src
+      - /app/node_modules
+    command: npm run dev
+
+  frontend:
+    environment:
+      - VITE_BACKEND_URL=http://backend:5000
+    volumes:
+      - ./frontend/src:/app/src
+      - /app/node_modules

@@ -1,41 +1,32 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+$gitignore = @'
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# Env & secrets
+.env
+.env.local
+.env.*.local
 
-# testing
-/coverage
+# Local data / PDF files (do NOT commit)
+sample_data/
+*.pdf
 
-# next.js
-/.next/
-/out/
+# Build outputs
+dist/
+build/
+.next/
+out/
 
-# production
-/build
-
-# misc
+# IDE / OS
+.vscode/
+.idea/
 .DS_Store
-*.pem
+Thumbs.db
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+# Misc
+last_check_response.json
+'@
 
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+Set-Content -Path ".\pdf-rule-checker\.gitignore" -Value $gitignore -Encoding UTF8
